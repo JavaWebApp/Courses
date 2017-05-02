@@ -1,5 +1,7 @@
 package CourseModel;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -9,10 +11,13 @@ import java.util.Iterator;
 public class Course {
 
     // При создании нового курса создается список студентов, которые слушают курс.
-
+    @SerializedName("Наименование курса")
     private String courseName;
+    @SerializedName("Номер курса")
     private int courseNumber;
+    @SerializedName("Стоимость курса")
     private float courseCost;
+    @SerializedName("Список студентов на курсе")
     private static ArrayList<Student> studentsList = new ArrayList<>();
 
     public Course(String courseName, int courseNumber, float courseCost) {
@@ -64,8 +69,6 @@ public class Course {
         while (studentsIterator.hasNext())
         {
             Student student = (Student)studentsIterator.next();
-            System.out.println("Имя студента: " + student.name + "\nНомер зачетной книжки " + student.getRecordBookNumber()
-                    + "\ne-mail:" + student.mail + "\nСредняя успеваемость: " + student.studyLevel + "\n");
         }
     }
     public static boolean isContains(Student student)
@@ -76,6 +79,32 @@ public class Course {
     }
 
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
+        Course course = (Course) o;
 
+        if (courseNumber != course.courseNumber) return false;
+        if (Float.compare(course.courseCost, courseCost) != 0) return false;
+        return courseName.equals(course.courseName);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = courseName.hashCode();
+        result = 31 * result + courseNumber;
+        result = 31 * result + (courseCost != +0.0f ? Float.floatToIntBits(courseCost) : 0);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Course{" +
+                "courseName='" + courseName + '\'' +
+                ", courseNumber=" + courseNumber +
+                ", courseCost=" + courseCost +
+                '}';
+    }
 }

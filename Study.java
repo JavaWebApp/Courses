@@ -1,5 +1,7 @@
 package CourseModel;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -7,7 +9,8 @@ import java.util.Random;
  * Created by TheEndl on 01.05.2017.
  */
 public class Study {
-    public ArrayList<Integer> marks = new ArrayList<>();
+    @SerializedName("Оценки студента")
+    private ArrayList<Integer> marks = new ArrayList<>();
 
     // Получить средний балл
     public void getMiddleGrade(Student student)
@@ -21,8 +24,8 @@ public class Study {
         }
         middle = sum / marks.size();
         if (middle > 0)
-        student.setStudyLevel(middle);
-        else System.out.println("Студент" + student.name + " еще не получал оценок");
+            student.setStudyLevel(middle);
+        else System.out.println("Студент" + student + " еще не получал оценок");
 
     }
 
@@ -52,5 +55,25 @@ public class Study {
 
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
+        Study study = (Study) o;
+
+        return marks.equals(study.marks);
+    }
+
+    @Override
+    public int hashCode() {
+        return marks.hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return "Study{" +
+                "marks=" + marks +
+                '}';
+    }
 }

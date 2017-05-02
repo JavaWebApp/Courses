@@ -1,17 +1,25 @@
 package CourseModel;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 
 /**
  * Created by TheEndl on 01.05.2017.
  */
-public class Student {
-    public String name;
-    public String address;
-    public String phone;
-    public String mail;
-    public Integer recordBookNumber;
-    public float studyLevel;
+public class Student extends  University{
+    @SerializedName("Имя студента")
+    private String name;
+    @SerializedName("Город")
+    private String address;
+    @SerializedName("Телефон")
+    private String phone;
+    @SerializedName("Эл. почта")
+    private String mail;
+    @SerializedName("Номер зачетки")
+    private Integer recordBookNumber;
+    @SerializedName("Средний балл")
+    private float studyLevel;
 
     public Student(String name, String address, String phone, String mail, Integer recordBookNumber) {
        /* Средняя успеваемость на старте равно нулю. */
@@ -78,48 +86,47 @@ public class Student {
 
     }
 
-    // Получить список прослушанных курсов
-    public void test(Student student)
-    {
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
+        Student student = (Student) o;
+
+        if (Float.compare(student.studyLevel, studyLevel) != 0) return false;
+        if (!name.equals(student.name)) return false;
+        if (!address.equals(student.address)) return false;
+        if (!phone.equals(student.phone)) return false;
+        if (!mail.equals(student.mail)) return false;
+        return recordBookNumber.equals(student.recordBookNumber);
     }
+
+    @Override
+    public int hashCode() {
+        int result = name.hashCode();
+        result = 31 * result + address.hashCode();
+        result = 31 * result + phone.hashCode();
+        result = 31 * result + mail.hashCode();
+        result = 31 * result + recordBookNumber.hashCode();
+        result = 31 * result + (studyLevel != +0.0f ? Float.floatToIntBits(studyLevel) : 0);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", phone='" + phone + '\'' +
+                ", mail='" + mail + '\'' +
+                ", recordBookNumber=" + recordBookNumber +
+                ", studyLevel=" + studyLevel +
+                '}';
+    }
+
     public static void main(String[] args) {
 
-        // Добавляем 3 студентов
 
-        Student student1 = new Student("John", "Moscow", "+79780537896", "John@gmail.com", 1);
-        Student student2 = new Student("Tomas", "Sevastopol", "+79787585496", "Tomas@gmail.com", 2);
-        Student student3 = new Student("Anna", "Simferopol", "+79781793456", "Anna@gmail.com", 3);
-
-        // Добавляем 1 курс
-
-        Course math = new Course("Математика", 1, 1000);
-        Course phys = new Course("Физика", 2, 1200);
-
-        // Записываем на курсы студентов
-
-        math.addStudent(student1);
-        math.addStudent(student2);
-
-        phys.addStudent(student1);
-        phys.addStudent(student2);
-
-        // Студенты проходят курсы, получают оценки
-        Study study1 = new Study();
-
-
-        study1.setMarkForStudent(student1);
-        study1.setMarkForStudent(student1);
-        study1.setMarkForStudent(student1);
-
-        //Получим средние баллы студентов
-        study1.getMiddleGrade(student1);
-
-
-        // Получаем списки студентов по курсу.
-        math.getStudentsList();
-        // Добавим профессора к курсу.
-        Teacher mathTeacher = new Teacher("Andrew", "London", "+0123456789", 500.0F);
 
 
 

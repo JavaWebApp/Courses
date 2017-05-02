@@ -1,12 +1,18 @@
 package CourseModel;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by TheEndl on 01.05.2017.
  */
 public class Teacher {
+    @SerializedName("Имя профессора")
     private String name;
+    @SerializedName("Город")
     private String address;
+    @SerializedName("Телефон")
     private String phone;
+    @SerializedName("Стоимость услуг")
     private Float payment;
 
     public Teacher(String name, String address, String phone, Float payment) {
@@ -46,5 +52,37 @@ public class Teacher {
 
     public void setPayment(Float payment) {
         this.payment = payment;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Teacher teacher = (Teacher) o;
+
+        if (!name.equals(teacher.name)) return false;
+        if (!address.equals(teacher.address)) return false;
+        if (!phone.equals(teacher.phone)) return false;
+        return payment.equals(teacher.payment);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name.hashCode();
+        result = 31 * result + address.hashCode();
+        result = 31 * result + phone.hashCode();
+        result = 31 * result + payment.hashCode();
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Teacher{" +
+                "name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", phone='" + phone + '\'' +
+                ", payment=" + payment +
+                '}';
     }
 }
