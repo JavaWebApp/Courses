@@ -10,10 +10,10 @@ public class Course {
 
     // При создании нового курса создается список студентов, которые слушают курс.
 
-    public String courseName;
-    public int courseNumber;
-    public float courseCost;
-    public static ArrayList<Student> studentsList = new ArrayList<>();
+    private String courseName;
+    private int courseNumber;
+    private float courseCost;
+    private static ArrayList<Student> studentsList = new ArrayList<>();
 
     public Course(String courseName, int courseNumber, float courseCost) {
         this.courseName = courseName;
