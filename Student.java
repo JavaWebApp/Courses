@@ -7,6 +7,8 @@ import java.util.ArrayList;
 /**
  * Created by TheEndl on 01.05.2017.
  */
+
+    /*Класс 'Student' - студент*/
 public class Student extends  University{
     @SerializedName("Имя студента")
     private String name;
@@ -22,7 +24,8 @@ public class Student extends  University{
     private float studyLevel;
 
     public Student(String name, String address, String phone, String mail, Integer recordBookNumber) {
-       /* Средняя успеваемость на старте равно нулю. */
+
+        /* Средняя успеваемость на при создании объекта равна нулю. */
 
         this.name = name;
         this.address = address;
@@ -30,11 +33,8 @@ public class Student extends  University{
         this.mail = mail;
         this.recordBookNumber = recordBookNumber;
         this.studyLevel = 0;
-
-        /*Study study = new Study();
-        study.setRandomMarks();*/
-
     }
+
 
     public String getName() {
         return name;
@@ -122,15 +122,5 @@ public class Student extends  University{
                 ", recordBookNumber=" + recordBookNumber +
                 ", studyLevel=" + studyLevel +
                 '}';
-    }
-
-    public static void main(String[] args) {
-
-
-
-
-
-
-
     }
 }

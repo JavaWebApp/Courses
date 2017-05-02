@@ -8,6 +8,8 @@ import java.util.Iterator;
 /**
  * Created by TheEndl on 01.05.2017.
  */
+
+    /* Класс 'Course' - Курс*/
 public class Course {
 
     // При создании нового курса создается список студентов, которые слушают курс.

@@ -5,6 +5,9 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Created by TheEndl on 01.05.2017.
  */
+
+    /*Класс Teacher - Профессор*/
+
 public class Teacher {
     @SerializedName("Имя профессора")
     private String name;

@@ -8,6 +8,9 @@ import java.util.Random;
 /**
  * Created by TheEndl on 01.05.2017.
  */
+
+    /* Класс 'Study' - прохождение курса.*/
+
 public class Study {
     @SerializedName("Оценки студента")
     private ArrayList<Integer> marks = new ArrayList<>();
@@ -15,7 +18,6 @@ public class Study {
     // Получить средний балл
     public void getMiddleGrade(Student student)
     {
-
         float sum = 0;
         float middle = 0;
         for (int i=0; i < marks.size(); i++)
@@ -29,9 +31,10 @@ public class Study {
 
     }
 
+    // Получить 10 случайных оценок в диапазоне от 0 до 5
    /* public void setRandomMarks()
     {
-            // Получить 10 случайных оценок в диапазоне от 0 до 5
+
             Integer mark=0;
 
             Random randomGenerator = new Random();

@@ -7,6 +7,9 @@ import org.ietf.jgss.GSSName;
 /**
  * Created by TheEndl on 02.05.2017.
  */
+
+    /* Класс 'University* - университет*/
+
 public class University {
 
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
